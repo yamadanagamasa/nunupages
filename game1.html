@@ -3,13 +3,23 @@
 <head>
     <meta charset="utf-8" />
     <title>game その１</title>
+    <meta chareset="utf-8">
+    <link rel="stylesheet" href="ddl2.css">
+    <title>nunu</title>
+    <meta name="description" content="ぬぬのさいとです">
+    <meta property="og:url" content="https://yamadanagamasa.github.io/nunupages/index.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ホーム" />
+    <meta property="og:description" content="ぬぬのさいとです" />     
+    <meta property="og:site_name" content="nunu" />    
+    <meta property="og:image" content="nut.png">
     <style>
     	* { padding: 0; margin: 0; }
-    	canvas { background: url(2451374258-thumb-247142_1920-vgLr-480x320-MM-100.jpg); display: block; margin: 0 auto; }
+    	canvas { background: url(https___aphoto.love_wp-content_uploads_2019_02_2019-02-28-10.04.56-640x427.jpg); display: block; margin: 0 auto; }
     </style>
 </head>
 <body>
-
+<div class="main">
 <canvas id="myCanvas" width="480" height="320"></canvas>
 
 <script>
@@ -82,7 +92,7 @@ function collisionDetection() {
           b.status = 0;
           score++;
           if(score == brickRowCount*brickColumnCount) {
-            alert("YOU WIN, CONGRATS!");
+            alert("ふん、よぉくぅやったぁ° ͜ ʖ ͡° )（何気なく上から目線）");
             document.location.reload();
           }
         }
@@ -183,8 +193,9 @@ function draw() {
 
 draw();	// JavaScriptのコードがここに入ります
 </script>
-<h2>ダニエルの腕</h2>
-<h1>サンプルをパクった</h1>
+<h2>ジョンソンの腕</h2>
+<h1>サンプルを改造しました</h1>
 <a href="https://developer.mozilla.org/ja/docs/Games/Workflows/2D_Breakout_game_pure_JavaScript/Finishing_up">サンプル元</a>
+</div>
 </body>
 </html>
