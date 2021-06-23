@@ -2,7 +2,11 @@
 <html>
     <head>
         <meta chareset="utf-8">
-        <link rel="stylesheet" href="ddl.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
         <title>nunu</title>
         <meta name="description" content="ぬぬのさいとです">
         <meta property="og:url" content="https://yamadanagamasa.github.io/nunupages/index.html" />
@@ -14,54 +18,102 @@
         <link rel="shortcut icon" href="nunuai copy.ico" type="image/x-icon">
         <link rel="apple-touch-icon" href="nunuai.png" sizes="180x180">
         <link rel="icon" type="image/png" href="nunuai.png" sizes="192x192">
+  <style>
+        .nes-container.is-centered {
+  margin-right: 20%;
+    margin-left: 20%;
+    }
+ .nes-container.is-rounded{
+  margin-right: 20%;
+    margin-left: 20%;
+ }
+    body{
+        background-color: rgb(5, 5, 5);
+
+        font-family: "Press Start 2P";font-size: 16px;
+        color: #d66161;
+      text-align:center;
+    }
+    h1{
+        color: #000000;
+    }
+    .title{
+
+        color: #ffffff;
+    }
+
+    .visual {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+    }
+    .movie {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    .movie video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%,-50%);
+    }
+ </style>
     </head>
     <body>
-        <div class="header">
-            <div class="container">
-            <div class="header-left">
-                <img class="header-logo" src="4.png" alt="html" width="100" height="30">
+        <section class="hero is-dark">
+            <div class="hero-body">
+              <div class="container">
+                <p class="title">
+                    <span class="nes-text is-success">ぬぬ教のサイト</span></p>
+    </h1>    
+
+         </div>
             </div>
-            <div class="header-right">
-                <a href="index.html">ホーム</a>
-                <a href="ad1.html">活動内容</a>
-                <a href="ad.html">その他</a>
-            </div>
+          </section>
             <div class="clear"></div>
             </div></div>
         <div class="main">
-            <div class="daimei">
-                <h1>ぬぬ教のサイト</h1>
-            
-            <div class="one">
-                <h2>いらっしゃい⸜( ´ ꒳ ` )⸝</h2>
-                <p>ぬぬ教は、ぬぬを信仰しぬぬを崇拝する組織です</p>
-                <p>このサイトでは活動内容を掲載します</p>
-            </div>
+            <div class="visual">
+                <div class="movie">
+        <video src="/Users/nori/Desktop/nunu/nunupages/720p.mov" loop autoplay muted></video>
+                  </div></div><div>
         </div>
-        </div>
-        <div class="opepe">
-            <div class="osi">
-                <h3>お知らせ：特になし</h3>
-            </div>
-            <h2>ぬぬ教のメンバー</h1>
-            <p>リーダー＆このサイトの管理人：ぬぬ　ダニエル（yamadanagamasa）</p>
-            <p> その他何名</p>
-            <h2>ぬぬとは</h2>
-            <p>ぬぬとは、偉大なるものという意味です。<br>
+        </div><br><br>
+        <h1 class="title">ぬぬ教とは？</h1><br>
+
+        <div class="nes-container is-rounded">
+        <p>ぬぬ教というのは、yamadanagamasa氏が教祖？みたいなのをする組織です。<br><br>
+
+            ぬぬとは、偉大なるものという意味です。<br>
             この世には、自己と他者この二つのみが存在しています<br>
-            この二つを融合することで、宇宙的パワーが得られます。
-            </p>
-        </div>
-        <div class="footer">
-            <div class="footer-left">
-                <p>このサイトをシェア</p>
-                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="nunu" data-url="https://yamadanagamasa.github.io/nunupages/" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            この二つを融合することで、宇宙的パワーが得られます。（大嘘）<br><br>
+        ぶっちゃけ宗教ではありません。</p></div><br>
+            <p class="title">活動一覧</p>
+            <div class="nes-container is-rounded">
+                <p>なんかシステムを作っています</p>
+            <br>
+                <a href="http://saccda1111.php.xdomain.jp/">ぬぬ掲示板</a>
+            <br>
+            <br>
+                <a href="https://yajuukora.herokuapp.com/">野獣コラ自動生成ツール</a>
+            <br>
             </div>
-            <div class="footer-right">
-                &copy; nunu.
-             </div>
-            <div class="clear"></div>
-        </div>
-  </body>
-    </body>
-<html>
+            <br><br>
+            <footer class="footer">
+                <div class="content has-text-centered">
+                  <a href="https://yamadanagamasa.github.io/nunupages/"> © nunu.</a>
+                  </p>
+                </div>
+              </footer>
+            </body>
+            </html>
