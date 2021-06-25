@@ -115,8 +115,10 @@
                <div class="nes-container is-rounded">
                    <div class="game1">
                <canvas id="myCanvas" width=480 height=320></canvas>
-
                <script>
+                function buttonClick(){   
+                  document.location.reload();
+                }
                var canvas = document.getElementById("myCanvas");
                var ctx = canvas.getContext("2d");
                var ballRadius = 10;
@@ -185,7 +187,6 @@
                          b.status = 0;
                          score++;
                          if(score == brickRowCount*brickColumnCount) {
-                           document.location.reload();
                          }
                        }
                      }
@@ -257,7 +258,6 @@
                    else {
                      lives--;
                      if(!lives) {
-                       document.location.reload();
                      }
                      else {
                        x = canvas.width/2;
@@ -282,17 +282,18 @@
                }
                
                draw();	// JavaScriptのコードがここに入ります
-               </script></div>
+               </script><br>
+               <input type="button"  class="nes-btn is-success" value="reset" onclick="buttonClick()">
+              </div>
                </div><br>
               <br>
               <br>
               <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
+              <footer class="footer">
+                <div class="content has-text-centered">
+                  <a href="https://yamadanagamasa.github.io/nunupages/"> © nunu.</a>
+                  </p>
+                </div>
+              </footer>
             </body>
             </html>
