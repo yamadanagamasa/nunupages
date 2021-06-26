@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="tetris.css">
+      <script type="text/javascript" src="tetris.js"></script>
+
+       <meta name="viewport" content="width=device-width,initial-scale=1">
+       <link rel="stylesheet" type="text/css" href="css/tetris.css">
+       <script type="text/javascript" src="js/tetris.js"></script>
         <title>nunu</title>
         <meta name="description" content="ぬぬのさいとです">
         <meta property="og:url" content="https://yamadanagamasa.github.io/nunupages/index.html" />
@@ -19,18 +28,55 @@
         <link rel="shortcut icon" href="nunuai copy.ico" type="image/x-icon">
         <link rel="apple-touch-icon" href="nunuai.png" sizes="180x180">
         <link rel="icon" type="image/png" href="nunuai.png" sizes="192x192">
-  <style>            
-    * { padding: 0; margin: 0; }
-    canvas { background: url(game1.jpg); display: block; margin: 0 auto; }
+  <style>     
+  html {
+    touch-action: manipulation;
+}
+.game1{
 
-        .nes-container.is-centered {
-  margin-right: 20%;
-    margin-left: 20%;
-    }
- .nes-container.is-rounded{
-  margin-right: 20%;
-    margin-left: 20%;
+  font-family: "Press Start 2P";font-size: 16px;
+}
+.wrapper-container {
+    display: inline-block;
+}
+
+.tetris-container {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    background-color: #333333;
+}
+
+.tetris-panel-container {
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+     flex-direction: column;
+    color: white;
+     background-color: #333333;
  }
+ 
+ .tetris-panel-container-padding {
+     flex-grow: 1;
+}
+ 
+ .tetris-panel-container p {
+    margin: 0;
+   padding: 0;
+ }
+ 
+ .tetris-button-panel {
+     border-style: none;
+     width: 100%;
+ }
+ 
+ .tetris-button {
+     padding-top: 10px;
+    padding-bottom: 10px;
+     text-align: center;
+     background: #444444;
+ }
+       
     body{
         background-color: rgb(255, 255, 255);
         font-family: 'Sawarabi Mincho', sans-serif;
@@ -114,177 +160,39 @@
                <br><br> <p class="title">謎のゲーム</p><br>
                <div class="nes-container is-rounded">
                    <div class="game1">
-               <canvas id="myCanvas" width=480 height=320></canvas>
-               <script>
-                function buttonClick(){   
-                  document.location.reload();
-                }
-               var canvas = document.getElementById("myCanvas");
-               var ctx = canvas.getContext("2d");
-               var ballRadius = 10;
-               var x = canvas.width/2;
-               var y = canvas.height-30;
-               var dx = 5;
-               var dy = -5;
-               var paddleHeight = 10;
-               var paddleWidth = 75;
-               var paddleX = (canvas.width-paddleWidth)/2;
-               var rightPressed = false;
-               var leftPressed = false;
-               var brickRowCount = 5;
-               var brickColumnCount = 3;
-               var brickWidth = 75;
-               var brickHeight = 20;
-               var brickPadding = 10;
-               var brickOffsetTop = 30;
-               var brickOffsetLeft = 30;
-               var score = 0;
-               var lives = 3;
-               
-               var bricks = [];
-               for(var c=0; c<brickColumnCount; c++) {
-                 bricks[c] = [];
-                 for(var r=0; r<brickRowCount; r++) {
-                   bricks[c][r] = { x: 0, y: 0, status: 1 };
-                 }
-               }
-               
-               document.addEventListener("keydown", keyDownHandler, false);
-               document.addEventListener("keyup", keyUpHandler, false);
-               document.addEventListener("mousemove", mouseMoveHandler, false);
-               
-               function keyDownHandler(e) {
-                   if(e.key == "Right" || e.key == "ArrowRight") {
-                       rightPressed = true;
-                   }
-                   else if(e.key == "Left" || e.key == "ArrowLeft") {
-                       leftPressed = true;
-                   }
-               }
-               
-               function keyUpHandler(e) {
-                   if(e.key == "Right" || e.key == "ArrowRight") {
-                       rightPressed = false;
-                   }
-                   else if(e.key == "Left" || e.key == "ArrowLeft") {
-                       leftPressed = false;
-                   }
-               }
-               
-               function mouseMoveHandler(e) {
-                 var relativeX = e.clientX - canvas.offsetLeft;
-                 if(relativeX > 0 && relativeX < canvas.width) {
-                   paddleX = relativeX - paddleWidth/2;
-                 }
-               }
-               function collisionDetection() {
-                 for(var c=0; c<brickColumnCount; c++) {
-                   for(var r=0; r<brickRowCount; r++) {
-                     var b = bricks[c][r];
-                     if(b.status == 1) {
-                       if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
-                         dy = -dy;
-                         b.status = 0;
-                         score++;
-                         if(score == brickRowCount*brickColumnCount) {
-                         }
-                       }
-                     }
-                   }
-                 }
-               }
-               
-               function drawBall() {
-                 ctx.beginPath();
-                 ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-                 ctx.fillStyle = "#ff7f50";
-                 ctx.fill();
-                 ctx.closePath();
-               }
-               function drawPaddle() {
-                 ctx.beginPath();
-                 ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-                 ctx.fillStyle = "#ff7f50";
-                 ctx.fill();
-                 ctx.closePath();
-               }
-               function drawBricks() {
-                 for(var c=0; c<brickColumnCount; c++) {
-                   for(var r=0; r<brickRowCount; r++) {
-                     if(bricks[c][r].status == 1) {
-                       var brickX = (r*(brickWidth+brickPadding))+brickOffsetLeft;
-                       var brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
-                       bricks[c][r].x = brickX;
-                       bricks[c][r].y = brickY;
-                       ctx.beginPath();
-                       ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                       ctx.fillStyle = "#ff7f50";
-                       ctx.fill();
-                       ctx.closePath();
-                     }
-                   }
-                 }
-               }
-               function drawScore() {
-                 ctx.font = "16px Arial";
-                 ctx.fillStyle = "#ff7f50";
-                 ctx.fillText("Score: "+score, 8, 20);
-               }
-               function drawLives() {
-                 ctx.font = "16px Arial";
-                 ctx.fillStyle = "#ff7f50";
-                 ctx.fillText("Lives: "+lives, canvas.width-65, 20);
-               }
-               
-               function draw() {
-                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                 drawBricks();
-                 drawBall();
-                 drawPaddle();
-                 drawScore();
-                 drawLives();
-                 collisionDetection();
-               
-                 if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-                   dx = -dx;
-                 }
-                 if(y + dy < ballRadius) {
-                   dy = -dy;
-                 }
-                 else if(y + dy > canvas.height-ballRadius) {
-                   if(x > paddleX && x < paddleX + paddleWidth) {
-                     dy = -dy;
-                   }
-                   else {
-                     lives--;
-                     if(!lives) {
-                     }
-                     else {
-                       x = canvas.width/2;
-                       y = canvas.height-30;
-                       dx = 5;
-                       dy = -5;
-                       paddleX = (canvas.width-paddleWidth)/2;
-                     }
-                   }
-                 }
-               
-                 if(rightPressed && paddleX < canvas.width-paddleWidth) {
-                   paddleX += 20;
-                 }
-                 else if(leftPressed && paddleX > 0) {
-                   paddleX -= 20;
-                 }
-               
-                 x += dx;
-                 y += dy;
-                 requestAnimationFrame(draw);
-               }
-               
-               draw();	// JavaScriptのコードがここに入ります
-               </script><br>
+                    <div class="wrapper-container">
+                               <span class="tetris-container">
+                                   <canvas id="stage" width="250px" height="500px" style="background-color:black;">
+                                   </canvas>
+                                  <span class="tetris-panel-container">
+                                     <p>Next:</p>
+                                       <canvas id="next" width="150px" height="150px" style="background-color:black;">
+                                       </canvas>
+                                     <p>LINES:<span id="lines">0</span></p>
+                                     <p><span id="message"></span></p>
+                                    <div class="tetris-panel-container-padding"></div>
+                                   <table class="tetris-button-panel">
+                                       <tr>
+                                        <td></td>
+                                         <td id="tetris-rotate-button" class="nes-btn is-success">↻</td>
+                                         <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td id="tetris-move-left-button"class="nes-btn is-success">←</td>
+                                      <td id="tetris-fall-button"class="nes-btn is-success">↓</td>
+                                       <td id="tetris-move-right-button"class="nes-btn is-success">→</td>
+                                      </tr>
+                                    </table>
+                                 </span>
+                              </span>
+                           </div>
+                          <script>
+                             var tetris = new Tetris();
+                             tetris.startGame();
+                          </script><br><br>
+
                <input type="button"  class="nes-btn is-success" value="reset" onclick="buttonClick()">
-              </div>
+             </div>
                </div><br>
               <br>
               <br>
